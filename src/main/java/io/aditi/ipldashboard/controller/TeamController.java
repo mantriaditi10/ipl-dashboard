@@ -31,6 +31,11 @@ public class TeamController {
         team.setMatches(matchRepository.findLatestMatchesByTeam(teamName, 4));
         return team;
     }  
+
+    @GetMapping("/team")
+    public Iterable<Team> getAllTeam() {
+        return teamRepository.findAll();
+    }
     
     @GetMapping("/team/{teamName}/matches")
     public List<Match> getMatchesForTeam(@PathVariable String teamName, @RequestParam int year){
